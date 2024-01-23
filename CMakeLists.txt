@@ -9,6 +9,7 @@ project(mlgc VERSION 0.0.0.1 LANGUAGES C)
 file(GLOB executable_source_files
     "./main.c"
     "./src/*.c"
+    "./src/*/*.c"
 )
 
 set(executable_header_files
