@@ -28,7 +28,44 @@ int main(int argc, char *argv[])
     lexer_t *lexer = create_lexer(source_code);
 
 
-    
+    bool can_exit = false;
+
+    token_t *curent_token = NULL;
+
+    lexer_skip_spaces(lexer);
+
+
+    while(!can_exit)
+    {
+
+        curent_token = lexer_next_token(lexer);
+
+
+        if (curent_token != NULL)
+        {
+
+            printf("token (type: %2d), (value: %s).\n", curent_token->type, curent_token->value);
+
+
+            switch (curent_token->type)
+            {
+
+            case TOKEN_EOF:
+
+                can_exit = true;
+
+
+                continue;
+
+            }
+
+        }
+
+
+        lexer_next_char(lexer);
+
+    }
+
 
 
     return EXIT_SUCCESS;

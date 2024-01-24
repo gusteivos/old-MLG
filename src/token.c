@@ -29,13 +29,8 @@ token_t *create_token(token_type_t type, char *value)
 
     new_token->type = type;
 
-
-    if (value != NULL)
-    {
-
-        new_token->value = strdup(value);
-
-    }
+    
+    new_token->value = (value != NULL) ? strdup(value) : NULL;
 
 
     return new_token;
@@ -119,3 +114,22 @@ bool token_to_mapping(token_t *token, token_mapping_t *mappings, bool free_token
     return true;
 
 }
+
+bool token_id_to_keyword_mapping(token_t *token)
+{
+
+    if (token == NULL)
+    {
+
+        fprintf(stderr, "Error, token is NULL.\n");
+
+
+        return false;
+
+    }
+
+
+    return token_to_mapping(token, token_keyword_mappings, true);
+
+}
+

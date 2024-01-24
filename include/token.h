@@ -15,6 +15,32 @@
 
         TOKEN_KEYWORD_FUNC,
 
+        TOKEN_ID,
+
+        TOKEN_DOT      ,
+        TOKEN_COMMA    ,
+        TOKEN_COLON    ,
+        TOKEN_SEMICOLON,
+
+        TOKEN_ASSIGN      , // =
+        TOKEN_EQUAL       , // ==
+        TOKEN_LES_THAN    , // <
+        TOKEN_BIG_THAN    , // >
+        TOKEN_LES_OR_EQUAL, // <=
+        TOKEN_BIG_OR_EQUAL, // >=
+
+        TOKEN_L_PARENTHESIS, // (
+        TOKEN_R_PARENTHESIS, // )
+        TOKEN_L_BRACKET    , // [
+        TOKEN_R_BRACKET    , // ]
+        TOKEN_L_BRACE      , // {
+        TOKEN_R_BRACE      , // }
+
+        TOKEN_SUB,
+        TOKEN_SUM,
+        TOKEN_MUL,
+        TOKEN_DIV,
+
         TOKEN_EOF  = EOF
 
     } token_type_t;
@@ -50,5 +76,7 @@
 
 
     extern bool token_to_mapping(token_t *token, token_mapping_t *mappings, bool free_token_value);
+
+    extern bool token_id_to_keyword_mapping(token_t *token);
 
 #endif
