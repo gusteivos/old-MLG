@@ -40,24 +40,32 @@ int main(int argc, char *argv[])
 
         curent_token = lexer_next_token(lexer);
 
+        if (curent_token == NULL)
+        {
 
-        if (curent_token != NULL)
+            fprintf(stderr, "TODO: .\n");
+
+
+            return EXIT_FAILURE;
+
+        }
+
+
+        if (curent_token->type != TOKEN_NONE)
         {
 
             printf("token (type: %2d), (value: %s).\n", curent_token->type, curent_token->value);
 
-
-            switch (curent_token->type)
-            {
-
-            case TOKEN_EOF:
-
-                can_exit = true;
+        }
 
 
-                continue;
+        if (curent_token->type == TOKEN_EOF)
+        {
 
-            }
+            can_exit = true;
+
+
+            continue;
 
         }
 

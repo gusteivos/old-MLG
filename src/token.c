@@ -6,6 +6,8 @@ token_mapping_t token_keyword_mappings[] =
 
     {"func", "function", TOKEN_KEYWORD_FUNC},
 
+    {"none", NULL, TOKEN_KEYWORD_NONE},
+
     {NULL, NULL, TOKEN_EOF}
 
 };
@@ -29,11 +31,43 @@ token_t *create_token(token_type_t type, char *value)
 
     new_token->type = type;
 
-    
+
     new_token->value = (value != NULL) ? strdup(value) : NULL;
 
 
     return new_token;
+
+}
+
+
+bool set_token(token_t *token, token_type_t type, char *value)
+{
+
+    if (token == NULL)
+    {
+
+        fprintf(stderr, "Error: token is null.\n");
+
+
+        return false;
+
+    }
+
+
+    token->type = type;
+
+
+    if (token->value != NULL)
+    {
+
+        free(token->value);
+
+    }
+
+    token->value = (value != NULL) ? strdup(value) : NULL;
+
+
+    return true;
 
 }
 
@@ -121,10 +155,20 @@ bool token_id_to_keyword_mapping(token_t *token)
     if (token == NULL)
     {
 
-        fprintf(stderr, "Error, token is NULL.\n");
+        fprintf(stderr, "Error: token is NULL.\n");
 
 
         return false;
+
+    }
+
+    if (token->type != TOKEN_ID)
+    {
+
+        fprintf(stderr, "Error: token not is of type TOKEN_ID.\n");
+
+
+        return NULL;
 
     }
 
@@ -132,4 +176,3 @@ bool token_id_to_keyword_mapping(token_t *token)
     return token_to_mapping(token, token_keyword_mappings, true);
 
 }
-

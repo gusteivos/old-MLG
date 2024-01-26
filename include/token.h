@@ -15,6 +15,8 @@
 
         TOKEN_KEYWORD_FUNC,
 
+        TOKEN_KEYWORD_NONE,
+
         TOKEN_ID,
 
         TOKEN_DOT      ,
@@ -24,10 +26,12 @@
 
         TOKEN_ASSIGN      , // =
         TOKEN_EQUAL       , // ==
+        TOKEN_EQUAL_OR_GRE, // =<
+        TOKEN_EQUAL_OR_LES, // =>
         TOKEN_LES_THAN    , // <
-        TOKEN_BIG_THAN    , // >
+        TOKEN_GRE_THAN    , // >
         TOKEN_LES_OR_EQUAL, // <=
-        TOKEN_BIG_OR_EQUAL, // >=
+        TOKEN_GRE_OR_EQUAL, // >=
 
         TOKEN_L_PARENTHESIS, // (
         TOKEN_R_PARENTHESIS, // )
@@ -36,10 +40,10 @@
         TOKEN_L_BRACE      , // {
         TOKEN_R_BRACE      , // }
 
-        TOKEN_SUB,
-        TOKEN_SUM,
-        TOKEN_MUL,
-        TOKEN_DIV,
+        MLG_TOKEN_ADD_SIGNAL,
+        MLG_TOKEN_SUB_SIGNAL,
+        MLG_TOKEN_MUL_SIGNAL,
+        MLG_TOKEN_DIV_SIGNAL,
 
         TOKEN_EOF  = EOF
 
@@ -70,6 +74,9 @@
 
 
     extern token_t *create_token(token_type_t type, char *value);
+
+
+    extern bool set_token(token_t *token, token_type_t type, char *value);
 
 
     extern void free_token(token_t *token);

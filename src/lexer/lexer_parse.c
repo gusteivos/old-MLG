@@ -49,6 +49,21 @@ token_t *lexer_parse_id(lexer_t *lexer)
     value[value_size - 1] = '\0';
 
 
-    return create_token(TOKEN_ID, value);
+    token_t *new_token = create_token(TOKEN_ID, value);
+
+    free(value);
+
+    if (new_token == NULL)
+    {
+
+        fprintf(stderr, "TODO: .\n");
+
+
+        return NULL;
+
+    }
+
+
+    return new_token;
 
 }

@@ -26,7 +26,7 @@ token_t *lexer_next_token(lexer_t *lexer)
     }
 
 
-    token_t *new_token = NULL;
+    token_t *new_token = create_token(TOKEN_NONE, NULL);
 
 
     if      (is_alpha(lexer->current_source_char))
@@ -47,11 +47,11 @@ token_t *lexer_next_token(lexer_t *lexer)
         switch (lexer->current_source_char)
         {
 
-        case '.': new_token = create_token(TOKEN_DOT      , NULL); break;
+        case '.': new_token->type = TOKEN_DOT  ; break;
 
-        case ',': new_token = create_token(TOKEN_COMMA    , NULL); break;
+        case ',': new_token->type = TOKEN_COMMA; break;
 
-        case ':': new_token = create_token(TOKEN_COLON    , NULL); break;
+        case ':': new_token->type = TOKEN_COLON; break;
 
         case ';':
 
@@ -64,7 +64,7 @@ token_t *lexer_next_token(lexer_t *lexer)
             else
             {
 
-                new_token   = create_token(TOKEN_SEMICOLON , NULL);
+                new_token->type = TOKEN_SEMICOLON;
 
             }
 
@@ -78,17 +78,15 @@ token_t *lexer_next_token(lexer_t *lexer)
 
             case '=':
 
-                new_token = create_token(TOKEN_EQUAL       , NULL);
+                new_token->type = TOKEN_EQUAL       ;
 
                 lexer_next_char(lexer);
 
                 break;
 
-            /* For the future maybe:
-
             case '<':
 
-                new_token = create_token(TOKEN_EQUAL_OR_LES, NULL);
+                new_token->type = TOKEN_EQUAL_OR_LES;
 
                 lexer_next_char(lexer);
 
@@ -96,18 +94,16 @@ token_t *lexer_next_token(lexer_t *lexer)
 
             case '>':
 
-                new_token = create_token(TOKEN_EQUAL_OR_BIG, NULL);
+                new_token->type = TOKEN_EQUAL_OR_GRE;
 
                 lexer_next_char(lexer);
 
                 break;
 
-            */
-
 
             default:
 
-                new_token = create_token(TOKEN_ASSIGN      , NULL);
+                new_token->type = TOKEN_ASSIGN      ;
 
                 break;
 
@@ -117,57 +113,35 @@ token_t *lexer_next_token(lexer_t *lexer)
 
         case '<':
 
-            if (lexer_eat_char(lexer, '='))
-            {
-
-                new_token = create_token(TOKEN_LES_OR_EQUAL, NULL);
-
-            }
-            else
-            {
-
-                new_token = create_token(TOKEN_LES_THAN    , NULL);
-
-            }
+            new_token->type = lexer_eat_char(lexer, '=') ? TOKEN_LES_OR_EQUAL : TOKEN_LES_THAN;
 
             break;
 
         case '>':
 
-            if (lexer_eat_char(lexer, '='))
-            {
-
-                new_token = create_token(TOKEN_BIG_OR_EQUAL, NULL);
-
-            }
-            else
-            {
-
-                new_token = create_token(TOKEN_BIG_THAN    , NULL);
-
-            }
+            new_token->type = lexer_eat_char(lexer, '=') ? TOKEN_GRE_OR_EQUAL : TOKEN_GRE_THAN;
 
             break;
 
 
-        case '(': new_token = create_token(TOKEN_L_PARENTHESIS, NULL); break;
+        case '(': new_token->type = TOKEN_L_PARENTHESIS; break;
 
-        case ')': new_token = create_token(TOKEN_R_PARENTHESIS, NULL); break;
+        case ')': new_token->type = TOKEN_R_PARENTHESIS; break;
 
-        case '[': new_token = create_token(TOKEN_L_BRACKET    , NULL); break;
+        case '[': new_token->type = TOKEN_L_BRACKET    ; break;
 
-        case ']': new_token = create_token(TOKEN_R_BRACKET    , NULL); break;
+        case ']': new_token->type = TOKEN_R_BRACKET    ; break;
 
-        case '{': new_token = create_token(TOKEN_L_BRACE      , NULL); break;
+        case '{': new_token->type = TOKEN_L_BRACE      ; break;
 
-        case '}': new_token = create_token(TOKEN_R_BRACE      , NULL); break;
+        case '}': new_token->type = TOKEN_R_BRACE      ; break;
 
 
-        case '-': new_token = create_token(TOKEN_SUB, NULL); break;
+        case '-': new_token->type = MLG_TOKEN_SUB_SIGNAL; break;
 
-        case '+': new_token = create_token(TOKEN_SUM, NULL); break;
+        case '+': new_token->type = MLG_TOKEN_ADD_SIGNAL; break;
 
-        case '*': new_token = create_token(TOKEN_MUL, NULL); break;
+        case '*': new_token->type = MLG_TOKEN_MUL_SIGNAL; break;
 
         case '/':
 
@@ -216,8 +190,7 @@ token_t *lexer_next_token(lexer_t *lexer)
 
             default:
 
-                new_token = create_token(TOKEN_DIV, NULL);
-
+                new_token->type = MLG_TOKEN_DIV_SIGNAL;
 
                 break;
 
@@ -228,6 +201,11 @@ token_t *lexer_next_token(lexer_t *lexer)
         default:
 
             fprintf(stderr, "Error, invalid character for lexer, %%c = %c, %%d = %d.\n", lexer->current_source_char, (int)lexer->current_source_char);
+
+
+            free_token(new_token);
+
+            new_token = NULL;
 
             break;
 
