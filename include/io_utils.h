@@ -4,6 +4,7 @@
 
     #include <stdio.h>
     #include <stdlib.h>
+    #include <string.h>
     
 
     extern char *read_file_to_string(const char *file_path);
