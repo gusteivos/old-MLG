@@ -5,6 +5,7 @@
     #include <io_utils.h>
 
     #include <lexer.h>
+    #include <parser.h>
 
 
     void usage(bool show_help, int exit_status);
