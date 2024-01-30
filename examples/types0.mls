@@ -1,0 +1,21 @@
+/*
+
+    date: 30/1/2024 | dd/mm/yyyy
+
+*/
+
+byte i8_a;
+byt  i8_b;
+int8 i8_c;
+
+short i16_a;
+shr   i16_b;
+int16 i16_c;
+
+integer i32_a;
+int     i32_b;
+int32   i32_c;
+
+long  i64_a;
+lng   i64_b;
+int64 i64_c;

@@ -16,6 +16,11 @@
         TOKEN_KEYWORD_FUNC,
 
         TOKEN_KEYWORD_NONE,
+        
+        TOKEN_KEYWORD_T_BYTE   ,
+        TOKEN_KEYWORD_T_SHORT  ,
+        TOKEN_KEYWORD_T_INTEGER,
+        TOKEN_KEYWORD_T_LONG   ,
 
         TOKEN_ID,
 
