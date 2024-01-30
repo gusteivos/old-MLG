@@ -12,7 +12,8 @@
 
         AST_NODE_COMPOUND,
 
-        AST_NODE_FUNCTION_DEFINITION,
+        AST_NODE_FUNCTION_DECLARATION,
+        AST_NODE_FUNCTION_DEFINITION ,
 
     } AST_node_type_t;
 
@@ -25,11 +26,19 @@
         list_t *compound;
 
 
+        union
+        {
+
+            char *name;
+
+            char *function_name;
+
+        };
+        
+
         /* TEMP ? */
 
             struct AST_node_s* function_definition_body;
-
-            char* function_definition_name;
 
             /* TODO: return type*/
 

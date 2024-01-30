@@ -30,13 +30,13 @@
     extern bool parser_consume_token (parser_t *parser, token_type_t type, bool can_exit);
 
 
-    extern AST_node_t *parser_parse                    (parser_t *parser);
+    extern AST_node_t *parser_parse           (parser_t *parser);
     
-    extern AST_node_t *parser_parse_statement          (parser_t *parser);
+    extern AST_node_t *parser_parse_statement (parser_t *parser);
     
-    extern AST_node_t *parser_parse_statements         (parser_t *parser);
+    extern AST_node_t *parser_parse_statements(parser_t *parser);
 
-    extern AST_node_t *parser_parse_function_definition(parser_t *parser);
+    extern AST_node_t *parser_parse_function  (parser_t *parser);
 
 
     extern void free_parser(parser_t *parser);

@@ -36,7 +36,7 @@ AST_node_t *parser_parse_statement(parser_t *parser)
     switch (parser->current_token->type)
     {
 
-    case TOKEN_KEYWORD_FUNC: return parser_parse_function_definition(parser);
+    case TOKEN_KEYWORD_FUNC: return parser_parse_function(parser);
 
     case TOKEN_L_BRACE:
 
@@ -92,7 +92,7 @@ AST_node_t *parser_parse_statements(parser_t *parser)
 
 }
 
-AST_node_t *parser_parse_function_definition(parser_t *parser)
+AST_node_t *parser_parse_function(parser_t *parser)
 {
 
     if (parser == NULL)
@@ -104,7 +104,6 @@ AST_node_t *parser_parse_function_definition(parser_t *parser)
         return NULL;
 
     }
-
 
     parser_consume_token(parser, TOKEN_KEYWORD_FUNC, true);
 
@@ -122,48 +121,81 @@ AST_node_t *parser_parse_function_definition(parser_t *parser)
 
     AST_node_t *node = create_AST_node(AST_NODE_FUNCTION_DEFINITION);
 
+    if (node == NULL)
+    {
+
+        fprintf(stderr, "Error: creating node for a function.\n");
+
+
+        exit(EXIT_FAILURE);
+
+    }
+
 
     node->function_name = parser->current_token->value;
 
 
-    parser_eat_token(parser, TOKEN_L_PARENTHESIS, true);
-
-    parser_next_token(parser);
+    parser_eat_token    (parser, TOKEN_L_PARENTHESIS, true);
 
 
     /* TODO: parsing arguments for the function. */
 
+    parser_next_token(parser);
+
 
     parser_consume_token(parser, TOKEN_R_PARENTHESIS, true);
 
+    parser_consume_token(parser, TOKEN_COLON        , true);
 
-    parser_consume_token(parser, TOKEN_COLON, true);
+
+    switch (parser->current_token->type)
+    {
+
+    case TOKEN_KEYWORD_NONE:
+
+        /*TODO: */
+
+        break;
+
+    default:
+
+        fprintf(stderr, "Error: unsupported token type %d for return type.\n", parser->current_token->type);
 
 
-    /* TEMP: */
+        exit(EXIT_FAILURE);
 
-        if (!(parser->current_token->type == TOKEN_KEYWORD_NONE))
-        {
+        break;
 
-            exit(EXIT_FAILURE);
-
-        }
-
+    }
 
     parser_next_token(parser);
 
 
-    /* TEMP: */
+    switch (parser->current_token->type)
+    {
 
-        if (!(parser->current_token->type == TOKEN_L_BRACE))
-        {
+    case TOKEN_SEMICOLON:
 
-            exit(EXIT_FAILURE);
+        node->type = AST_NODE_FUNCTION_DECLARATION;
 
-        }
+        break;
 
+    case TOKEN_L_BRACE:
 
         node->function_definition_body = parser_parse_statement(parser);
+
+        break;
+
+    default:
+
+        fprintf(stderr, "Error: unsupported token type %d.\n", parser->current_token->type);
+
+
+        exit(EXIT_FAILURE);
+
+        break;
+
+    }
 
 
     return node;
