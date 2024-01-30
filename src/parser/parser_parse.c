@@ -49,6 +49,9 @@ AST_node_t *parser_parse_statement(parser_t *parser)
 
         fprintf(stderr, "Unexpected token type %d, with value %s.\n", parser->current_token->type, parser->current_token->value);
 
+
+        exit(EXIT_FAILURE);
+
         break;
 
     }
