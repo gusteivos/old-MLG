@@ -17,10 +17,10 @@
 
         TOKEN_KEYWORD_NONE,
         
-        TOKEN_KEYWORD_T_BYTE   ,
-        TOKEN_KEYWORD_T_SHORT  ,
-        TOKEN_KEYWORD_T_INTEGER,
-        TOKEN_KEYWORD_T_LONG   ,
+        TOKEN_KEYWORD_T_INT8 ,
+        TOKEN_KEYWORD_T_INT16,
+        TOKEN_KEYWORD_T_INT32,
+        TOKEN_KEYWORD_T_INT64,
 
         TOKEN_ID,
 

@@ -8,14 +8,14 @@ token_mapping_t token_keyword_mappings[] =
 
     {"none", NULL, TOKEN_KEYWORD_NONE},
 
-    {"byte"   , "byt", TOKEN_KEYWORD_T_BYTE   },
-    {"short"  , "shr", TOKEN_KEYWORD_T_SHORT  },
-    {"integer", "int", TOKEN_KEYWORD_T_INTEGER},
-    {"long"   , "lng", TOKEN_KEYWORD_T_LONG   },
-    {"int8"   , NULL , TOKEN_KEYWORD_T_BYTE   },
-    {"int16"  , NULL , TOKEN_KEYWORD_T_SHORT  },
-    {"int32"  , NULL , TOKEN_KEYWORD_T_INTEGER},
-    {"int64"  , NULL , TOKEN_KEYWORD_T_LONG   },
+    {"int8" , "i8" , TOKEN_KEYWORD_T_INT8 },
+    {"int16", "i16", TOKEN_KEYWORD_T_INT16},
+    {"int32", "i32", TOKEN_KEYWORD_T_INT32},
+    {"int64", "i64", TOKEN_KEYWORD_T_INT64},
+    {"byte" , NULL , TOKEN_KEYWORD_T_INT8 },
+    {"short", NULL , TOKEN_KEYWORD_T_INT16},
+    {"int"  , NULL , TOKEN_KEYWORD_T_INT32},
+    {"long" , NULL , TOKEN_KEYWORD_T_INT64},
 
     {NULL, NULL, TOKEN_EOF}
 
