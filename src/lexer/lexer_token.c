@@ -32,13 +32,47 @@ token_t *lexer_next_token(lexer_t *lexer)
     if      (is_alpha(lexer->current_source_char))
     {
 
-        token_id_to_keyword_mapping(new_token = lexer_parse_id(lexer));
+        free(new_token);
+
+        new_token = lexer_parse_id(lexer);
+
+        if (new_token == NULL)
+        {
+
+            /* TODO:  */
+
+
+            exit(EXIT_FAILURE);
+
+        }
+
+        if (token_id_to_keyword_mapping(new_token) == false)
+        {
+
+            /* TODO:  */
+
+
+            exit(EXIT_FAILURE);
+
+        }
 
     }
     else if (is_digit(lexer->current_source_char))
     {
 
-        /*TODO: parse number.*/
+        free(new_token);
+
+        new_token = lexer_parse_number(lexer);
+
+        if (new_token == NULL)
+        {
+
+            /* TODO:  */
+
+
+            exit(EXIT_FAILURE);
+
+        }
 
     }
     else

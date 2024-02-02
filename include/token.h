@@ -24,6 +24,8 @@
 
         TOKEN_ID,
 
+        TOKEN_LITERAL_NUMBER,
+
         TOKEN_DOT      ,
         TOKEN_COMMA    ,
         TOKEN_COLON    ,
@@ -31,8 +33,8 @@
 
         TOKEN_ASSIGN      , // =
         TOKEN_EQUAL       , // ==
-        TOKEN_EQUAL_OR_GRE, // =<
-        TOKEN_EQUAL_OR_LES, // =>
+        TOKEN_EQUAL_OR_LES, // =<
+        TOKEN_EQUAL_OR_GRE, // =>
         TOKEN_LES_THAN    , // <
         TOKEN_GRE_THAN    , // >
         TOKEN_LES_OR_EQUAL, // <=
