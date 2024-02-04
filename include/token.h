@@ -47,10 +47,10 @@
         TOKEN_L_BRACE      , // {
         TOKEN_R_BRACE      , // }
 
-        MLG_TOKEN_ADD_SIGNAL,
-        MLG_TOKEN_SUB_SIGNAL,
-        MLG_TOKEN_MUL_SIGNAL,
-        MLG_TOKEN_DIV_SIGNAL,
+        TOKEN_ADD_SIGNAL,
+        TOKEN_SUB_SIGNAL,
+        TOKEN_MUL_SIGNAL,
+        TOKEN_DIV_SIGNAL,
 
         TOKEN_EOF  = EOF
 
