@@ -171,11 +171,11 @@ token_t *lexer_next_token(lexer_t *lexer)
         case '}': new_token->type = TOKEN_R_BRACE      ; break;
 
 
-        case '-': new_token->type = MLG_TOKEN_SUB_SIGNAL; break;
+        case '-': new_token->type = TOKEN_SUB_SIGNAL; break;
 
-        case '+': new_token->type = MLG_TOKEN_ADD_SIGNAL; break;
+        case '+': new_token->type = TOKEN_ADD_SIGNAL; break;
 
-        case '*': new_token->type = MLG_TOKEN_MUL_SIGNAL; break;
+        case '*': new_token->type = TOKEN_MUL_SIGNAL; break;
 
         case '/':
 
@@ -224,7 +224,7 @@ token_t *lexer_next_token(lexer_t *lexer)
 
             default:
 
-                new_token->type = MLG_TOKEN_DIV_SIGNAL;
+                new_token->type = TOKEN_DIV_SIGNAL;
 
                 break;
 
