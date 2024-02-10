@@ -126,12 +126,12 @@ void lexer_skip_line(lexer_t *lexer)
     }
 
 
-    while (lexer->current_source_char != '\n' && lexer->current_source_char != '\0')
+    while (lexer->current_source_char != '\0' && lexer->current_source_char != '\n')
     {
 
-        lexer_next_char  (lexer);
-
         lexer_skip_spaces(lexer);
+
+        lexer_next_char  (lexer);
 
     }
     

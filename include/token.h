@@ -10,17 +10,25 @@
 
     typedef enum token_type_e
     {
-
+        
         TOKEN_NONE = 0,
-
-        TOKEN_KEYWORD_FUNC,
-
+        
         TOKEN_KEYWORD_NONE,
         
         TOKEN_KEYWORD_T_INT8 ,
         TOKEN_KEYWORD_T_INT16,
         TOKEN_KEYWORD_T_INT32,
         TOKEN_KEYWORD_T_INT64,
+
+        TOKEN_KEYWORD_FUNCTION,
+        
+        TOKEN_KEYWORD_RETURN,
+        TOKEN_KEYWORD_IF    ,
+        TOKEN_KEYWORD_ELSE  ,
+        TOKEN_KEYWORD_LOOP  ,
+        TOKEN_KEYWORD_WHILE ,
+        TOKEN_KEYWORD_FOR   ,
+        TOKEN_KEYWORD_BREAK ,
 
         TOKEN_ID,
 
@@ -31,26 +39,54 @@
         TOKEN_COLON    ,
         TOKEN_SEMICOLON,
 
-        TOKEN_ASSIGN      , // =
-        TOKEN_EQUAL       , // ==
-        TOKEN_EQUAL_OR_LES, // =<
-        TOKEN_EQUAL_OR_GRE, // =>
-        TOKEN_LES_THAN    , // <
-        TOKEN_GRE_THAN    , // >
-        TOKEN_LES_OR_EQUAL, // <=
-        TOKEN_GRE_OR_EQUAL, // >=
+        TOKEN_PLUS       , /* +  */
+        TOKEN_MINUS      , /* -  */
+        TOKEN_ASTERISK   , /* *  */
+        TOKEN_SLASH      , /* /  */
+        TOKEN_PERCENT    , /* %  */
 
-        TOKEN_L_PARENTHESIS, // (
-        TOKEN_R_PARENTHESIS, // )
-        TOKEN_L_BRACKET    , // [
-        TOKEN_R_BRACKET    , // ]
-        TOKEN_L_BRACE      , // {
-        TOKEN_R_BRACE      , // }
+        TOKEN_AMPERSAND  , /* &  */
+        TOKEN_PIPE       , /* |  */
+        TOEKN_CIRCUMFLEX , /* ^  */
+        TOKEN_L_SHIFT    , /* << */
+        TOKEN_R_SHIFT    , /* >> */
+        
+        TOKEN_TIL        , /* ~  */
+        
+        TOKEN_AND        , /* && */
+        TOKEN_OR         , /* || */
+        TOKEN_EXCLAMATION, /* !  */
+        
+        TOKEN_LES_THAN   , /* <  */
+        TOKEN_GRE_THAN   , /* >  */
+        TOKEN_ASSIGN     , /* =  */
 
-        TOKEN_ADD_SIGNAL,
-        TOKEN_SUB_SIGNAL,
-        TOKEN_MUL_SIGNAL,
-        TOKEN_DIV_SIGNAL,
+        TOKEN_PLUS_ASSIGN   , /* += */
+        TOKEN_MINUS_ASSIGN  , /* -= */
+        TOKEN_MUL_ASSIGN    , /* *= */
+        TOKEN_DIV_ASSIGN    , /* /= */
+        TOKEN_MOD_ASSIGN    , /* %= */
+
+        TOKEN_AND_ASSIGN    , /* &=  */
+        TOKEN_OR_ASSIGN     , /* |=  */
+        TOKEN_XOR_ASSIGN    , /* ^=  */
+        TOKEN_L_SHIFT_ASSIGN, /* <<= */
+        TOKEN_R_SHIFT_ASSIGN, /* >>= */
+        
+        TOKEN_NOT_EQUAL     , /* != */
+        
+        TOKEN_LES_OR_EQUAL  , /* <= */
+        TOKEN_GRE_OR_EQUAL  , /* >= */
+        TOKEN_EQUAL         , /* == */
+
+        TOKEN_AT         , /* @ */
+
+        TOKEN_L_PAREN  , /* ( */
+        TOKEN_R_PAREN  , /* ) */
+        TOKEN_L_BRACKET, /* [ */
+        TOKEN_R_BRACKET, /* ] */
+        TOKEN_L_BRACE  , /* { */
+        TOKEN_R_BRACE  , /* } */
 
         TOKEN_EOF  = EOF
 

@@ -105,77 +105,23 @@ token_t *lexer_next_token(lexer_t *lexer)
             break;
 
 
-        case '=':
+        case '+':
 
-            switch (lexer_peek_char(lexer, 1))
-            {
-
-            case '=':
-
-                new_token->type = TOKEN_EQUAL       ;
-
-                lexer_next_char(lexer);
-
-                break;
-
-            case '<':
-
-                new_token->type = TOKEN_EQUAL_OR_LES;
-
-                lexer_next_char(lexer);
-
-                break;
-
-            case '>':
-
-                new_token->type = TOKEN_EQUAL_OR_GRE;
-
-                lexer_next_char(lexer);
-
-                break;
-
-
-            default:
-
-                new_token->type = TOKEN_ASSIGN      ;
-
-                break;
-
-            }
+            new_token->type = lexer_eat_char(lexer, '=') ? TOKEN_PLUS_ASSIGN  : TOKEN_PLUS    ;
 
             break;
 
-        case '<':
+        case '-':
 
-            new_token->type = lexer_eat_char(lexer, '=') ? TOKEN_LES_OR_EQUAL : TOKEN_LES_THAN;
-
-            break;
-
-        case '>':
-
-            new_token->type = lexer_eat_char(lexer, '=') ? TOKEN_GRE_OR_EQUAL : TOKEN_GRE_THAN;
+            new_token->type = lexer_eat_char(lexer, '=') ? TOKEN_MINUS_ASSIGN : TOKEN_MINUS   ;
 
             break;
 
+        case '*':
 
-        case '(': new_token->type = TOKEN_L_PARENTHESIS; break;
+            new_token->type = lexer_eat_char(lexer, '=') ? TOKEN_MUL_ASSIGN   : TOKEN_ASTERISK;
 
-        case ')': new_token->type = TOKEN_R_PARENTHESIS; break;
-
-        case '[': new_token->type = TOKEN_L_BRACKET    ; break;
-
-        case ']': new_token->type = TOKEN_R_BRACKET    ; break;
-
-        case '{': new_token->type = TOKEN_L_BRACE      ; break;
-
-        case '}': new_token->type = TOKEN_R_BRACE      ; break;
-
-
-        case '-': new_token->type = TOKEN_SUB_SIGNAL; break;
-
-        case '+': new_token->type = TOKEN_ADD_SIGNAL; break;
-
-        case '*': new_token->type = TOKEN_MUL_SIGNAL; break;
+            break;
 
         case '/':
 
@@ -188,16 +134,13 @@ token_t *lexer_next_token(lexer_t *lexer)
 
                 lexer_skip_line(lexer);
 
-
                 break;
-
 
             case '*':
 
                 lexer_next_char(lexer);
 
                 lexer_next_char(lexer);
-
 
                 while (lexer->current_source_char != '\0')
                 {
@@ -214,23 +157,212 @@ token_t *lexer_next_token(lexer_t *lexer)
 
                     }
 
-
                     lexer_next_char(lexer);
 
                 }
 
                 break;
 
+            case '=':
+
+                new_token->type = TOKEN_DIV_ASSIGN;
+
+                lexer_next_char(lexer);
+
+                break;
+
 
             default:
 
-                new_token->type = TOKEN_DIV_SIGNAL;
+                new_token->type = TOKEN_SLASH;
 
                 break;
 
             }
 
             break;
+
+        case '%':
+
+            new_token->type = lexer_eat_char(lexer, '=') ? TOKEN_MOD_ASSIGN   : TOKEN_PERCENT ;
+
+            break;
+
+
+        case '&':
+
+            switch (lexer_peek_char(lexer, 1))
+            {
+
+            case '=':
+
+                new_token->type = TOKEN_AND_ASSIGN;
+
+                lexer_next_char(lexer);
+                
+                break;
+            
+            case '&':
+
+                lexer_next_char(lexer);
+
+                new_token->type = TOKEN_AND;
+
+                break;
+            
+
+            default:
+            
+                new_token->type = TOKEN_AMPERSAND;
+
+                break;
+            
+            }
+
+            break;
+
+        case '|':
+
+            switch (lexer_peek_char(lexer, 1))
+            {
+
+            case '=':
+
+                new_token->type = TOKEN_OR_ASSIGN ;
+
+                lexer_next_char(lexer);
+                
+                break;
+            
+            case '|':
+
+                lexer_next_char(lexer);
+
+                new_token->type = TOKEN_OR ;
+
+                break;
+            
+
+            default:
+            
+                new_token->type = TOKEN_PIPE     ;
+
+                break;
+            
+            }
+
+            break;
+
+        case '^':
+
+            new_token->type = lexer_eat_char(lexer, '=') ? TOKEN_XOR_ASSIGN  : TOEKN_CIRCUMFLEX;
+
+            break;
+
+        case '!':
+
+            new_token->type = lexer_eat_char(lexer, '=') ? TOKEN_NOT_EQUAL : TOKEN_EXCLAMATION;
+            
+            break;
+
+
+        case '~':
+
+            new_token->type = TOKEN_TIL;
+
+            break;
+
+
+        case '<':
+
+            switch (lexer_peek_char(lexer, 1))
+            {
+
+            case '=':
+
+                new_token->type = TOKEN_LES_OR_EQUAL;
+
+                lexer_next_char(lexer);
+                
+                break;
+            
+            case '<':
+
+                lexer_next_char(lexer);
+
+                new_token->type = lexer_eat_char(lexer, '=') ? TOKEN_L_SHIFT_ASSIGN : TOKEN_L_SHIFT;
+
+                break;
+            
+
+            default:
+            
+                new_token->type = TOKEN_LES_THAN;
+
+                break;
+            
+            }
+
+            break;
+
+        case '>':
+
+            switch (lexer_peek_char(lexer, 1))
+            {
+
+            case '=':
+                
+                new_token->type = TOKEN_GRE_OR_EQUAL;
+
+                lexer_next_char(lexer);
+
+                break;
+            
+            case '>':
+
+                lexer_next_char(lexer);
+
+                new_token->type = lexer_eat_char(lexer, '=') ? TOKEN_R_SHIFT_ASSIGN : TOKEN_R_SHIFT;
+
+                break;
+            
+
+            default:
+            
+                new_token->type = TOKEN_GRE_THAN;
+
+                break;
+            
+            }
+
+            break;
+        
+        case '=':
+
+            new_token->type = lexer_eat_char(lexer, '=') ? TOKEN_EQUAL : TOKEN_ASSIGN;
+            
+            break;
+
+
+        case '@':
+
+            new_token->type = TOKEN_AT;
+
+            break;
+
+
+        case '(': new_token->type = TOKEN_L_PAREN  ; break;
+
+        case ')': new_token->type = TOKEN_R_PAREN  ; break;
+
+        case '[': new_token->type = TOKEN_L_BRACKET; break;
+
+        case ']': new_token->type = TOKEN_R_BRACKET; break;
+
+        case '{': new_token->type = TOKEN_L_BRACE  ; break;
+
+        case '}': new_token->type = TOKEN_R_BRACE  ; break;
+
 
         default:
 

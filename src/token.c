@@ -4,19 +4,23 @@
 token_mapping_t token_keyword_mappings[] =
 {
 
-    {"func", "function", TOKEN_KEYWORD_FUNC},
-
     {"none", NULL, TOKEN_KEYWORD_NONE},
 
-    {"int8" , "i8" , TOKEN_KEYWORD_T_INT8 },
-    {"int16", "i16", TOKEN_KEYWORD_T_INT16},
-    {"int32", "i32", TOKEN_KEYWORD_T_INT32},
-    {"int64", "i64", TOKEN_KEYWORD_T_INT64},
-    {"byte" , NULL , TOKEN_KEYWORD_T_INT8 },
-    {"short", NULL , TOKEN_KEYWORD_T_INT16},
-    {"int"  , NULL , TOKEN_KEYWORD_T_INT32},
-    {"long" , NULL , TOKEN_KEYWORD_T_INT64},
+    {"int8" , "byte" , TOKEN_KEYWORD_T_INT8 },
+    {"int16", "short", TOKEN_KEYWORD_T_INT16},
+    {"int32", "int"  , TOKEN_KEYWORD_T_INT32},
+    {"int64", "long" , TOKEN_KEYWORD_T_INT64},
 
+    {"func", "function", TOKEN_KEYWORD_FUNCTION},
+
+    {"return", "ret", TOKEN_KEYWORD_RETURN},
+    {"if"    , NULL , TOKEN_KEYWORD_IF    },
+    {"else"  , "el" , TOKEN_KEYWORD_ELSE  },
+    {"loop"  , NULL , TOKEN_KEYWORD_LOOP  },
+    {"while" , NULL , TOKEN_KEYWORD_WHILE },
+    {"for"   , NULL , TOKEN_KEYWORD_FOR   },
+    {"break" , NULL , TOKEN_KEYWORD_BREAK },
+   
     {NULL, NULL, TOKEN_EOF}
 
 };

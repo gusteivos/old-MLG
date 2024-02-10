@@ -1,0 +1,55 @@
+/*
+
+    date: 10/2/2024 | dd/mm/yyyy
+
+*/
+
+int32 a = 22;
+
+int32 b = 47;
+
+
+int32 c = 0;
+
+
+function sum_a_b() : int32
+{
+
+    return a + b;
+
+}
+
+function c_is_prime() : int8
+{
+
+    int8 is_prime = 1;
+
+    for (int32 q = 2; q <= num / 2; q++)
+    {
+    
+        if (c % i == 0)
+        {
+        
+            is_prime = 0;
+        
+
+            break;
+        
+        }
+    
+    }
+
+
+    return is_prime;
+
+}
+
+
+function entry() : none
+{
+
+    c = sum_a_b();
+
+    c_is_prime ();
+
+}

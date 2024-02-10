@@ -1,0 +1,70 @@
+/*
+
+    date: 10/2/2024 | dd/mm/yyyy
+
+*/
+
+/* NONE */
+
+none /* KEYWORD_NONE */
+
+int8 byte /* KEYWORD_T_INT8 */
+int16 short /* KEYWORD_T_INT16 */
+int32 int /* KEYWORD_T_INT32 */
+int64 long /* KEYWORD_T_INT64 */
+
+func function /* KEYWORD_FUNCTION */
+
+ret return /* KEYWORD_RETURN */
+if /* KEYWORD_IF */
+el else /* KEYWORD_ELSE */
+
+id a_0 /* id */
+
+1234567890 1972 /* LITERAL_NUMBER */
+
+. /* DOT */
+, /* COMMA */
+: /* COLON */
+; /* SEMICLOON */
+
++ /* PLUS */
+- /* MINUS */
+* /* ASTERISK */
+/ /* SLASH */
+% /* PERCENT */
+
+& /* AMPERSAND */
+| /* PIPE */
+^ /* CIRCUMFLEX */
+<< /* L_SHIFT */
+>> /* R_SHIFT */
+
+~ /* TIL */
+
+&& /* AND */
+|| /* OR */
+! /* EXCLAMATION */
+
+< /* LES_THAN */
+> /* GRE_THAN */
+= /* ASSIGN */
+
+
+;# TODO
+
+
+<= /* LES_OR_EQUAL */
+>= /* GRE_OR_EQUAL */
+== /* EQUAL*/
+
+@ /* AT */
+
+( /* L_PAREN */
+) /* R_PAREN */
+[ /* L_BRACKET */
+] /* R_BRACKET */
+{ /* L_BRACE */
+} /* R_BRACE */
+
+/* EOF */

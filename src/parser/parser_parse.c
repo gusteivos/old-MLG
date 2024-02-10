@@ -36,7 +36,7 @@ AST_node_t *parser_parse_statement(parser_t *parser)
     switch (parser->current_token->type)
     {
 
-    case TOKEN_KEYWORD_FUNC: return parser_parse_function(parser);
+    case TOKEN_KEYWORD_FUNCTION: return parser_parse_function(parser);
 
     case TOKEN_L_BRACE:
 
@@ -108,7 +108,7 @@ AST_node_t *parser_parse_function(parser_t *parser)
 
     }
 
-    parser_consume_token(parser, TOKEN_KEYWORD_FUNC, true);
+    parser_consume_token(parser, TOKEN_KEYWORD_FUNCTION, true);
 
 
     if (parser->current_token->type != TOKEN_ID)
@@ -138,7 +138,7 @@ AST_node_t *parser_parse_function(parser_t *parser)
     node->function_name = parser->current_token->value;
 
 
-    parser_eat_token    (parser, TOKEN_L_PARENTHESIS, true);
+    parser_eat_token    (parser, TOKEN_L_PAREN, true);
 
 
     /* TODO: parsing arguments for the function. */
@@ -146,7 +146,7 @@ AST_node_t *parser_parse_function(parser_t *parser)
     parser_next_token(parser);
 
 
-    parser_consume_token(parser, TOKEN_R_PARENTHESIS, true);
+    parser_consume_token(parser, TOKEN_R_PAREN, true);
 
     parser_consume_token(parser, TOKEN_COLON        , true);
 
