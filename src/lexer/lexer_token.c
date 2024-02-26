@@ -259,17 +259,16 @@ token_t *lexer_next_token(lexer_t *lexer)
 
             break;
 
-        case '!':
-
-            new_token->type = lexer_eat_char(lexer, '=') ? TOKEN_NOT_EQUAL : TOKEN_EXCLAMATION;
-            
-            break;
-
-
         case '~':
 
             new_token->type = TOKEN_TIL;
 
+            break;
+
+        case '!':
+
+            new_token->type = lexer_eat_char(lexer, '=') ? TOKEN_NOT_EQUAL : TOKEN_EXCLAMATION;
+            
             break;
 
 

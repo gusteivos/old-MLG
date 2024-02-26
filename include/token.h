@@ -39,33 +39,30 @@
         TOKEN_COLON    ,
         TOKEN_SEMICOLON,
 
-        TOKEN_PLUS       , /* +  */
-        TOKEN_MINUS      , /* -  */
-        TOKEN_ASTERISK   , /* *  */
-        TOKEN_SLASH      , /* /  */
-        TOKEN_PERCENT    , /* %  */
+        TOKEN_PLUS    , /* + */
+        TOKEN_MINUS   , /* - */
+        TOKEN_ASTERISK, /* * */
+        TOKEN_SLASH   , /* / */
+        TOKEN_PERCENT , /* % */
 
-        TOKEN_AMPERSAND  , /* &  */
-        TOKEN_PIPE       , /* |  */
-        TOEKN_CIRCUMFLEX , /* ^  */
-        TOKEN_L_SHIFT    , /* << */
-        TOKEN_R_SHIFT    , /* >> */
-        
-        TOKEN_TIL        , /* ~  */
+        TOKEN_AMPERSAND , /* &  */
+        TOKEN_PIPE      , /* |  */
+        TOEKN_CIRCUMFLEX, /* ^  */
+        TOKEN_L_SHIFT   , /* << */
+        TOKEN_R_SHIFT   , /* >> */
+        TOKEN_TIL       , /* ~  */
         
         TOKEN_AND        , /* && */
         TOKEN_OR         , /* || */
         TOKEN_EXCLAMATION, /* !  */
-        
-        TOKEN_LES_THAN   , /* <  */
-        TOKEN_GRE_THAN   , /* >  */
-        TOKEN_ASSIGN     , /* =  */
 
-        TOKEN_PLUS_ASSIGN   , /* += */
-        TOKEN_MINUS_ASSIGN  , /* -= */
-        TOKEN_MUL_ASSIGN    , /* *= */
-        TOKEN_DIV_ASSIGN    , /* /= */
-        TOKEN_MOD_ASSIGN    , /* %= */
+        TOKEN_ASSIGN, /* = */
+
+        TOKEN_PLUS_ASSIGN , /* += */
+        TOKEN_MINUS_ASSIGN, /* -= */
+        TOKEN_MUL_ASSIGN  , /* *= */
+        TOKEN_DIV_ASSIGN  , /* /= */
+        TOKEN_MOD_ASSIGN  , /* %= */
 
         TOKEN_AND_ASSIGN    , /* &=  */
         TOKEN_OR_ASSIGN     , /* |=  */
@@ -73,13 +70,14 @@
         TOKEN_L_SHIFT_ASSIGN, /* <<= */
         TOKEN_R_SHIFT_ASSIGN, /* >>= */
         
-        TOKEN_NOT_EQUAL     , /* != */
-        
-        TOKEN_LES_OR_EQUAL  , /* <= */
-        TOKEN_GRE_OR_EQUAL  , /* >= */
-        TOKEN_EQUAL         , /* == */
+        TOKEN_LES_THAN    , /* <  */
+        TOKEN_LES_OR_EQUAL, /* <= */
+        TOKEN_GRE_THAN    , /* >  */
+        TOKEN_GRE_OR_EQUAL, /* >= */
+        TOKEN_EQUAL       , /* == */
+        TOKEN_NOT_EQUAL   , /* != */
 
-        TOKEN_AT         , /* @ */
+        TOKEN_AT, /* @ */
 
         TOKEN_L_PAREN  , /* ( */
         TOKEN_R_PAREN  , /* ) */

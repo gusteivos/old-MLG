@@ -24,7 +24,7 @@ function c_is_prime() : int8
 
     int8 is_prime = 1;
 
-    for (int32 q = 2; q <= num / 2; q++)
+    for (int32 q = 2; q * q <= num; q++)
     {
     
         if (c % i == 0)

@@ -6,16 +6,12 @@
 
 byte  i8_a ;
 int8  i8_b ;
-i8    i8_c ;
 
 short i16_a;
 int16 i16_b;
-i16   i16_c;
 
 int   i32_a;
 int32 i32_b;
-i32   i32_c;
 
 long  i64_a;
 int64 i64_b;
-i64   i64_c;
